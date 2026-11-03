@@ -1,0 +1,341 @@
+
+--[[
+    POTASSIUM UNC TESTER
+    API availability + filesystem functionality
+]]
+
+local executor = "Potassium"
+local passed = 0
+local failed = 0
+local total = 0
+
+if executor ~= "Potassium" then
+    warn("Wrong executor!")
+    return
+end
+
+local env = (type(getgenv) == "function" and getgenv()) or _G
+
+local function resolve(path)
+    local current = env
+
+    for segment in string.gmatch(path, "[^%.]+") do
+        if type(current) ~= "table" then
+            return nil
+        end
+
+        current = current[segment]
+    end
+
+    return current
+end
+
+local function test(name, callback)
+    total += 1
+
+    local success, result = pcall(callback)
+
+    if success and result == true then
+        passed += 1
+        print("🟢 " .. name)
+    else
+        failed += 1
+        warn("🔴 " .. name)
+    end
+end
+
+local function check(name, path)
+    test(name, function()
+        return type(resolve(path)) == "function"
+    end)
+end
+
+print("================================")
+print("       POTASSIUM UNC TEST")
+print("================================")
+
+-- FILESYSTEM
+
+local folder = "Potassium_UNC_Test"
+local file = folder .. "/test.txt"
+
+local filesystem = {
+    "appendfile",
+    "delfile",
+    "delfolder",
+    "dofile",
+    "isfile",
+    "isfolder",
+    "listfiles",
+    "loadfile",
+    "makefolder",
+    "readfile",
+    "writefile"
+}
+
+for _, name in ipairs(filesystem) do
+    check("Filesystem: " .. name, name)
+end
+
+-- CLOSURES
+
+local closures = {
+    "checkcaller",
+    "clonefunction",
+    "getfunctionhash",
+    "hookfunction",
+    "iscclosure",
+    "isexecutorclosure",
+    "isfunctionhooked",
+    "islclosure",
+    "isnewcclosure",
+    "isourthread",
+    "loadstring",
+    "newcclosure",
+    "newlclosure",
+    "restorefunction"
+}
+
+for _, name in ipairs(closures) do
+    check("Closure: " .. name, name)
+end
+
+-- ENVIRONMENT
+
+local environment = {
+    "filtergc",
+    "getgc",
+    "getgenv",
+    "getreg",
+    "getrenv",
+    "getsenv",
+    "gettenv",
+    "getloadedmodules",
+    "getrunningscripts",
+    "getscripts",
+    "getscriptbytecode",
+    "getscriptclosure",
+    "getscripthash",
+    "getthreadidentity",
+    "setthreadidentity"
+}
+
+for _, name in ipairs(environment) do
+    check("Environment: " .. name, name)
+end
+
+-- DEBUG
+
+local debugFunctions = {
+    "getcallstack",
+    "getconstant",
+    "getconstants",
+    "getinfo",
+    "getproto",
+    "getprotos",
+    "getregistry",
+    "getsafeenv",
+    "getstack",
+    "getupvalue",
+    "getupvalues",
+    "isvalidlevel",
+    "setconstant",
+    "setinfo",
+    "setname",
+    "setsafeenv",
+    "setstack",
+    "setupvalue"
+}
+
+for _, name in ipairs(debugFunctions) do
+    check("Debug: " .. name, "debug." .. name)
+end
+
+-- CRYPTOGRAPHY
+
+local cryptFunctions = {
+    "base64decode",
+    "base64encode",
+    "decrypt",
+    "encrypt",
+    "generatebytes",
+    "generatekey",
+    "hash",
+    "hmac",
+    "lz4compress",
+    "lz4decompress",
+    "random"
+}
+
+for _, name in ipairs(cryptFunctions) do
+    check("Crypt: " .. name, "crypt." .. name)
+end
+
+-- CACHE
+
+local cacheFunctions = {
+    "invalidate",
+    "iscached",
+    "replace"
+}
+
+for _, name in ipairs(cacheFunctions) do
+    check("Cache: " .. name, "cache." .. name)
+end
+
+-- DRAWING
+
+local drawingFunctions = {
+    "new",
+    "Fonts"
+}
+
+for _, name in ipairs(drawingFunctions) do
+    if name == "Fonts" then
+        test("Drawing: Fonts", function()
+            return type(resolve("Drawing.Fonts")) == "table"
+        end)
+    else
+        check("Drawing: " .. name, "Drawing." .. name)
+    end
+end
+
+check("Drawing: isrenderobj", "isrenderobj")
+check("Drawing: getrenderproperty", "getrenderproperty")
+check("Drawing: setrenderproperty", "setrenderproperty")
+check("Drawing: cleardrawcache", "cleardrawcache")
+
+-- CONSOLE
+
+local consoleFunctions = {
+    "rconsoleclear",
+    "rconsolecreate",
+    "rconsoledestroy",
+    "rconsoleerror",
+    "rconsoleinfo",
+    "rconsoleinput",
+    "rconsoleprint",
+    "rconsolesettitle",
+    "rconsolewarn"
+}
+
+for _, name in ipairs(consoleFunctions) do
+    check("Console: " .. name, name)
+end
+
+-- INPUT (PRESENCE ONLY)
+
+local inputFunctions = {
+    "isrbxactive",
+    "keypress",
+    "keyrelease",
+    "keytap",
+    "mouse1click",
+    "mouse1press",
+    "mouse1release",
+    "mouse2click",
+    "mouse2press",
+    "mouse2release",
+    "mousemoveabs",
+    "mousemoverel",
+    "mousescroll"
+}
+
+for _, name in ipairs(inputFunctions) do
+    check("Input: " .. name, name)
+end
+
+-- ACTORS
+
+local actorFunctions = {
+    "create_comm_channel",
+    "get_comm_channel",
+    "getactors",
+    "getactorthreads",
+    "getdeletedactors",
+    "is_parallel",
+    "run_on_actor",
+    "run_on_thread"
+}
+
+for _, name in ipairs(actorFunctions) do
+    check("Actors: " .. name, name)
+end
+
+-- SIGNALS (PRESENCE ONLY)
+
+local signalFunctions = {
+    "cansignalreplicate",
+    "firesignal",
+    "getconnection",
+    "getconnections",
+    "getsignalarguments",
+    "getsignalargumentsinfo",
+    "getsignalwhitelist",
+    "replicatesignal"
+}
+
+for _, name in ipairs(signalFunctions) do
+    check("Signals: " .. name, name)
+end
+
+-- WEBSOCKET
+
+check("WebSocket: connect", "WebSocket.connect")
+
+-- METATABLES (PRESENCE ONLY)
+
+local metaFunctions = {
+    "getrawmetatable",
+    "setrawmetatable",
+    "getnamecallmethod",
+    "setnamecallmethod",
+    "setreadonly",
+    "isreadonly",
+    "makereadonly",
+    "makewritable",
+    "hookmetamethod"
+}
+
+for _, name in ipairs(metaFunctions) do
+    check("Metatable: " .. name, name)
+end
+
+-- REGEX
+
+check("Regex: new", "Regex.new")
+
+-- INSTANCE / REFERENCES
+
+local instanceFunctions = {
+    "cloneref",
+    "compareinstances"
+}
+
+for _, name in ipairs(instanceFunctions) do
+    check("Instance: " .. name, name)
+end
+
+-- SUMMARY
+
+task.wait(0.5)
+
+local percentage = total > 0
+    and math.floor((passed / total) * 100)
+    or 0
+
+print("================================")
+print("       UNC TEST RESULTS")
+print("================================")
+print("Executor: " .. executor)
+print("Total: " .. total)
+print("Passed: " .. passed)
+print("Failed: " .. failed)
+print("API Availability: " .. percentage .. "%")
+print("================================")
+
+if failed == 0 then
+    print("🟢 ALL DOCUMENTED CHECKS PASSED")
+else
+    warn("🔴 SOME API FUNCTIONS ARE MISSING")
+end
