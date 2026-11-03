@@ -10,8 +10,7 @@ local failed = 0
 local total = 0
 
 if executor ~= "Potassium" then
-    warn("Wrong executor!")
-    return
+   print("not potassium")
 end
 
 local env = (type(getgenv) == "function" and getgenv()) or _G
