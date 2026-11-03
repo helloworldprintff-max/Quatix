@@ -1,0 +1,177 @@
+-- Gui to Lua
+-- Version: 3.2
+
+-- Instances:
+
+local Tester = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local UICorner = Instance.new("UICorner")
+local label = Instance.new("TextLabel")
+local unc = Instance.new("TextButton")
+local UICorner_2 = Instance.new("UICorner")
+local image = Instance.new("ImageLabel")
+local bUNC = Instance.new("TextButton")
+local UICorner_3 = Instance.new("UICorner")
+local image_2 = Instance.new("ImageLabel")
+local closegui = Instance.new("TextButton")
+local UICorner_4 = Instance.new("UICorner")
+local consoleTest = Instance.new("TextButton")
+local UICorner_5 = Instance.new("UICorner")
+local image_3 = Instance.new("ImageLabel")
+
+--Properties:
+
+Tester.Name = "Tester"
+Tester.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+Tester.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+Frame.Parent = Tester
+Frame.Active = true
+Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Frame.BackgroundTransparency = 0.500
+Frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Frame.BorderSizePixel = 0
+
+--DraggableGUIS:Enable() // plugin.Storage.version-1xII099B7D60P.csharp.DraggableGUIS.hookComments(this)
+Frame.Draggable = true
+Frame.Position = UDim2.new(0.358253151, 9, 0.184110969, -45)
+Frame.Selectable = true
+Frame.Size = UDim2.new(0, 365, 0, 549)
+
+UICorner.Parent = Frame
+
+label.Name = "label"
+label.Parent = Frame
+label.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+label.BackgroundTransparency = 1.000
+label.BorderColor3 = Color3.fromRGB(0, 0, 0)
+label.BorderSizePixel = 0
+label.Position = UDim2.new(0.208219185, 0, -0.0218579229, 0)
+label.Size = UDim2.new(0, 200, 0, 50)
+label.Font = Enum.Font.ArialBold
+label.Text = "Executor Tester"
+label.TextColor3 = Color3.fromRGB(0, 0, 0)
+label.TextSize = 19.000
+
+unc.Name = "unc"
+unc.Parent = Frame
+unc.BackgroundColor3 = Color3.fromRGB(33, 33, 33)
+unc.BorderColor3 = Color3.fromRGB(0, 0, 0)
+unc.BorderSizePixel = 0
+unc.Position = UDim2.new(0.0547945201, 0, 0.0564663038, 0)
+unc.Size = UDim2.new(0, 238, 0, 37)
+unc.Font = Enum.Font.SourceSans
+unc.Text = "potassium unc test"
+unc.TextColor3 = Color3.fromRGB(255, 255, 255)
+unc.TextSize = 21.000
+
+UICorner_2.Parent = unc
+
+image.Name = "image"
+image.Parent = unc
+image.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+image.BackgroundTransparency = 1.000
+image.BorderColor3 = Color3.fromRGB(0, 0, 0)
+image.BorderSizePixel = 0
+image.Position = UDim2.new(0.0252100844, 0, 0, 0)
+image.Size = UDim2.new(0, 37, 0, 37)
+image.Image = "rbxassetid://111229832599218"
+
+bUNC.Name = "bUNC"
+bUNC.Parent = Frame
+bUNC.BackgroundColor3 = Color3.fromRGB(33, 33, 33)
+bUNC.BorderColor3 = Color3.fromRGB(0, 0, 0)
+bUNC.BorderSizePixel = 0
+bUNC.Position = UDim2.new(0.0547945201, 0, 0.134790525, 0)
+bUNC.Size = UDim2.new(0, 238, 0, 37)
+bUNC.Font = Enum.Font.SourceSans
+bUNC.Text = "potassium bUNC test"
+bUNC.TextColor3 = Color3.fromRGB(255, 255, 255)
+bUNC.TextSize = 21.000
+
+UICorner_3.Parent = bUNC
+
+image_2.Name = "image"
+image_2.Parent = bUNC
+image_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+image_2.BackgroundTransparency = 1.000
+image_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+image_2.BorderSizePixel = 0
+image_2.Size = UDim2.new(0, 37, 0, 37)
+image_2.Image = "rbxassetid://111229832599218"
+
+closegui.Name = "closegui"
+closegui.Parent = Frame
+closegui.BackgroundColor3 = Color3.fromRGB(148, 27, 27)
+closegui.BorderColor3 = Color3.fromRGB(0, 0, 0)
+closegui.BorderSizePixel = 0
+closegui.Position = UDim2.new(0.876712322, 0, 0.00182149361, 0)
+closegui.Size = UDim2.new(0, 37, 0, 37)
+closegui.Font = Enum.Font.SourceSans
+closegui.Text = "X"
+closegui.TextColor3 = Color3.fromRGB(255, 255, 255)
+closegui.TextSize = 21.000
+
+UICorner_4.Parent = closegui
+
+consoleTest.Name = "consoleTest"
+consoleTest.Parent = Frame
+consoleTest.BackgroundColor3 = Color3.fromRGB(33, 33, 33)
+consoleTest.BorderColor3 = Color3.fromRGB(0, 0, 0)
+consoleTest.BorderSizePixel = 0
+consoleTest.Position = UDim2.new(0.0547945201, 0, 0.222222224, 0)
+consoleTest.Size = UDim2.new(0, 238, 0, 37)
+consoleTest.Font = Enum.Font.SourceSans
+consoleTest.Text = "Universal Console test"
+consoleTest.TextColor3 = Color3.fromRGB(255, 255, 255)
+consoleTest.TextSize = 21.000
+
+UICorner_5.Parent = consoleTest
+
+image_3.Name = "image"
+image_3.Parent = consoleTest
+image_3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+image_3.BackgroundTransparency = 1.000
+image_3.BorderColor3 = Color3.fromRGB(0, 0, 0)
+image_3.BorderSizePixel = 0
+image_3.Size = UDim2.new(0, 37, 0, 37)
+image_3.Image = "rbxassetid://111229832599218"
+
+-- Scripts:
+
+local function ERCQ_fake_script() -- unc.LocalScript 
+	local script = Instance.new('LocalScript', unc)
+
+	script.Parent.MouseButton1Down:Connect(function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/helloworldprintff-max/Quatix/refs/heads/main/unamed%20UNC%20Test"))()
+	end)
+end
+coroutine.wrap(ERCQ_fake_script)()
+local function LWJUV_fake_script() -- bUNC.LocalScript 
+	local script = Instance.new('LocalScript', bUNC)
+
+	script.Parent.MouseButton1Down:Connect(function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/helloworldprintff-max/Quatix/refs/heads/main/bUNC%20Test.lua"))()
+	end)
+end
+coroutine.wrap(LWJUV_fake_script)()
+local function QGLGMY_fake_script() -- closegui.LocalScript 
+	local script = Instance.new('LocalScript', closegui)
+
+	script.Parent.MouseButton1Up:Connect(function()
+		script.Parent.Parent.Parent:Destroy()
+	end)
+end
+coroutine.wrap(QGLGMY_fake_script)()
+local function OPMEON_fake_script() -- consoleTest.LocalScript 
+	local script = Instance.new('LocalScript', consoleTest)
+
+	script.Parent.MouseButton1Down:Connect(function()
+		rconsolecreate()
+		rconsolesettitle("Console Test")
+		rconsoleprint("Success.")
+		print("All CONSOLE tests passed.")
+		
+	end)
+end
+coroutine.wrap(OPMEON_fake_script)()
